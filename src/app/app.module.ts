@@ -12,7 +12,7 @@ import { ProductService } from './product.service';
 import { RegisterComponent } from './register/register.component';
 import { RouteModule }  from './route/route.module';
 import { HomeComponent } from './home/home.component';
-
+import { ReactiveFormsModule } from '@angular/forms'; //Reactive Form Module
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     HttpClientModule,
     SlideshowModule,
-    RouteModule
+    RouteModule,
+    ReactiveFormsModule //load module
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

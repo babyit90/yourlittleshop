@@ -7,18 +7,35 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   regisForm: FormGroup;
+  
   constructor(private fb: FormBuilder) {
+   
      this.regisForm = fb.group(
        {
          'name': ['', Validators.required],
-         'email': ['', Validators.required],
-         'password': ['', Validators.required]
-       }
-     )
+         'email': ['', [
+             Validators.required,
+            , Validators.email]
+            ],
+         'phone': ['', [
+           Validators.required,
+           Validators.maxLength(10)
+          ]],
+        
+          'password': ['', [Validators.required]],
+          'confirm_password': ['', [Validators.required, passwordConfirming]],
+      }
+     );
+    }
+     passwordConfirming(datas) {
+      console.log('hurrah');
+      console.log(datas);
    }
+   
 
+   
    Registration(data){
-     console.log(data);
+    console.log( this.regisForm );
    }
   ngOnInit() {
   }

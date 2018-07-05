@@ -9,10 +9,12 @@ import { SliderComponent } from './slider/slider.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductService } from './product.service';
+import { LoginService } from './service/login.service';
 import { RegisterComponent } from './register/register.component';
 import { RouteModule }  from './route/route.module';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms'; //Reactive Form Module
+import { ReactiveFormsModule } from '@angular/forms';//Reactive Form Module
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms'; //Reactive Form Module
     MainComponent,
     FooterComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms'; //Reactive Form Module
     RouteModule,
     ReactiveFormsModule //load module
   ],
-  providers: [ProductService],
+  providers: [ProductService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

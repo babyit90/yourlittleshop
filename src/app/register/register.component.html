@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="form-horizontal"  [formGroup] = "regisForm" (submit) = "Registration(regisForm.value)">
+    <form class="form-horizontal"  [formGroup] = "regisForm">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -108,16 +108,27 @@
                         <div class="input-group-addon" style="width: 2.6rem">
                             <i class="fa fa-repeat"></i>
                         </div>
-                        <input type="password" name="confirm_password" class="form-control"
-                               id="password-confirm">
+                        <input type="password" formControlName="confirm_password" class="form-control" id="confirm_password">
                     </div>
                 </div>
             </div>
+            <div class="col-md-3" *ngIf = "!regisForm.controls['confirm_password'].valid && regisForm.controls['confirm_password'].touched">
+                <div class="form-control-feedback" *ngIf = "regisForm.controls['confirm_password'].errors.required">
+                        <span class="text-danger align-middle">
+                            Confirm Password is required!
+                        </span>                      
+                </div>
+                <div class="form-control-feedback" *ngIf = "regisForm.controls['confirm_password'].errors.isError">
+                    <span class="text-danger align-middle">
+                        Password and Confirm Password do not match!
+                    </span>                      
+                </div>
+            </div> 
         </div>
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <button type="submit"  class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+                <button type="submit"  class="btn btn-success" (click)="Registration(regisForm.value)"><i class="fa fa-user-plus"></i> Register</button>
             </div>
         </div>
     </form>
